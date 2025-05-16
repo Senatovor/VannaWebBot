@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+  pgsql:
+    container_name: 'pdsql'
+    image: postgres:13.3
+    ports:
+      - "5433:5432"
+    env_file:
+      /src/.env
+    volumes:
+      - pgsql_data:/var/lib/pgsql
+    restart: unless-stopped
+
+  qdrant:
+    container_name: 'qdrant'
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  flask:
+    container_name: 'flask'
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    ports:
+      - "5000:5000"
+    command: python app/app_web.py
+
+  aiogram:
+    container_name: 'aiogram'
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    command: python app/app_telegram.py
+
+
+volumes:
+  pgsql_data:
+  qdrant_data:
