@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     telegram_bot_token: str
     # SQL код для просмотра таблицы
     first_ddl: str
+    first_sql: str
+    first_question: str
 
     model_config = SettingsConfigDict(
         env_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.env')

@@ -1,4 +1,3 @@
-from config import settings
 from vanna_setup import vanna_setup
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
@@ -9,6 +8,8 @@ dp = Dispatcher()
 vn = vanna_setup()
 
 vn.train(ddl=settings.first_ddl)
+vn.train(question=settings.first_question,
+         sql=settings.first_sql)
 
 
 @dp.message(Command("start"))
