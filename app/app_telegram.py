@@ -1,15 +1,10 @@
-from vanna_setup import vanna_setup
+from vanna_setup import vn
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from config import settings
 
-bot = Bot(token=settings.telegram_bot_token)
+bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
 dp = Dispatcher()
-vn = vanna_setup()
-
-vn.train(ddl=settings.first_ddl)
-vn.train(question=settings.first_question,
-         sql=settings.first_sql)
 
 
 @dp.message(Command("start"))

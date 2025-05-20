@@ -2,7 +2,7 @@ from vanna.flask.auth import AuthInterface
 import flask
 import os
 from vanna.flask import VannaFlaskApp
-from vanna_setup import vanna_setup
+from vanna_setup import vn
 from config import settings
 
 
@@ -56,7 +56,7 @@ class SimplePassword(AuthInterface):
 
 
 VannaFlaskApp(
-        vn=vanna_setup(),
+        vn=vn,
         auth=SimplePassword(users=settings.get_users()),
         allow_llm_to_see_data=True,
         title="Приветствуем!",
