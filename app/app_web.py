@@ -55,16 +55,17 @@ class SimplePassword(AuthInterface):
         return response
 
 
-VannaFlaskApp(
-        vn=vn,
-        auth=SimplePassword(users=settings.get_users()),
-        allow_llm_to_see_data=True,
-        title="Приветствуем!",
-        subtitle="Это тестовый бот",
-        show_training_data=True,
-        sql=True,
-        table=True,
-        chart=True,
-        summarization=False,
-        ask_results_correct=True,
-).run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == '__main__':
+    VannaFlaskApp(
+            vn=vn,
+            auth=SimplePassword(users=settings.get_users()),
+            allow_llm_to_see_data=True,
+            title="Приветствуем!",
+            subtitle="Это тестовый бот",
+            show_training_data=True,
+            sql=True,
+            table=True,
+            chart=True,
+            summarization=False,
+            ask_results_correct=True,
+    ).run(host='0.0.0.0', port=5000, debug=True)
