@@ -8,7 +8,7 @@ class MyVanna(Qdrant_VectorStore, Ollama):
     def __init__(self, config=None):
         Qdrant_VectorStore.__init__(self, config=config)
         Ollama.__init__(self, config={
-            'OLLAMA_HOST': settings.OLLAMA_HOST,
+            'ollama_host': settings.OLLAMA_HOST,
             'model': settings.OLLAMA_MODEL
         })
 
